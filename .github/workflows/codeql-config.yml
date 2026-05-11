@@ -1,0 +1,23 @@
+# .github/codeql-config.yml
+#
+# Extended CodeQL configuration for forensic-grade analysis.
+# Forensic value: this config is versioned — if the analysis
+# rules change between commits, investigators can identify
+# exactly when a vulnerability first became detectable.
+
+name: "Forensic CodeQL Config"
+
+queries:
+  # Standard security queries
+  - uses: security-and-quality
+  # Extended queries for supply chain and injection patterns
+  - uses: security-extended
+
+paths-ignore:
+  - "node_modules"
+  - "dist"
+  - "build"
+  - "**/*.test.js"
+  - "**/*.test.ts"
+  - "**/*.spec.js"
+  - "**/*.spec.ts"
