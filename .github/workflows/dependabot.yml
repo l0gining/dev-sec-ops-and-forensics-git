@@ -1,0 +1,58 @@
+# .github/dependabot.yml
+#
+# Forensic value: Dependabot creates a timestamped audit trail
+# of all dependency changes. Every PR it opens is logged with:
+#   - which package was updated
+#   - from which vulnerable version
+#   - by which automated actor
+# This log is invaluable during supply-chain incident reconstruction.
+
+version: 2
+
+updates:
+  # ── npm (React application) ────────────────────────────
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Europe/Amsterdam"
+    # Open up to 10 PRs at once
+    open-pull-requests-limit: 10
+    # Group minor/patch updates to reduce noise
+    groups:
+      dev-dependencies:
+        patterns: ["*"]
+        dependency-type: "development"
+        update-types: ["minor", "patch"]
+      production-dependencies:
+        patterns: ["*"]
+        dependency-type: "production"
+        update-types: ["minor", "patch"]
+    # Always review major version bumps individually
+    ignore: []
+    labels:
+      - "dependencies"
+      - "security"
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(dev-deps)"
+      include: "scope"
+
+  # ── GitHub Actions ─────────────────────────────────────
+  # Keeps all action versions up-to-date — critical for
+  # security (action supply chain attacks are real)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Europe/Amsterdam"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "chore(actions)"
