@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 30% 98%;
+  --foreground: 218 35% 12%;
+  --panel: 0 0% 100%;
+  --muted: 213 22% 92%;
+  --border: 214 18% 84%;
+  --primary: 187 78% 32%;
+  --accent: 42 92% 56%;
+  --danger: 355 76% 55%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.prose h1,
+.prose h2,
+.prose h3 {
+  color: hsl(var(--foreground));
+  letter-spacing: 0;
+}
+
+.prose pre {
+  overflow: auto;
+  border-radius: 8px;
+  background: #101820;
+  color: #f6f8fa;
+  padding: 1rem;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid hsl(var(--border));
+  padding: 0.4rem 0.55rem;
+}
