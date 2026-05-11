@@ -2,10 +2,5 @@
 node_modules/
 tsconfig.tsbuildinfo
 *.log
-.env.local
-<<<<<<< HEAD
 .env
-.env.example
-=======
-.env.example
->>>>>>> afae1b5 (web-app MVP is finished)
+.env.local
