@@ -1,0 +1,18 @@
+{
+  "caseId": "CASE-001",
+  "title": "secure-1",
+  "status": "Opened",
+  "severity": "Medium",
+  "createdAt": "2026-05-11T19:53:48.409Z",
+  "updatedAt": "2026-05-11T19:53:48.409Z",
+  "investigator": "Nik",
+  "relatedRepository": "",
+  "relatedCommitSha": "",
+  "relatedWorkflowRun": "",
+  "relatedArtifact": "",
+  "tags": [
+    "ci-cd",
+    "incident"
+  ],
+  "summary": ""
+}
