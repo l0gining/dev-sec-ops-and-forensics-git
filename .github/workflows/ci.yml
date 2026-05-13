@@ -101,17 +101,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: codeql-sarif-report
-          path: /home/runner/work/_temp/results/javascript.sarif
+          path: /home/runner/work/dev-sec-ops-and-forensics-git/results/javascript.sarif
           retention-days: 90
-        if: always()
-
-      - name: Find SARIF file location
-        run: |
-          echo "=== Searching for .sarif files ==="
-          find /home/runner/work -name "*.sarif" 2>/dev/null
-          echo "=== CODEQL results dir ==="
-          ls -la /home/runner/work/_temp/results/ 2>/dev/null || echo "No results dir"
-          ls -la /home/runner/work/_temp/ 2>/dev/null
         if: always()
 
   # ==========================================================
