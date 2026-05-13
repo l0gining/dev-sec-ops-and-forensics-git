@@ -97,6 +97,23 @@ jobs:
           upload: true
         timeout-minutes: 30
 
+      - name: Upload SARIF as forensic artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: codeql-sarif-report
+          path: /home/runner/work/_temp/codeql_databases/../results/javascript.sarif
+          retention-days: 90
+        if: always()
+
+      - name: Find SARIF file location
+        run: |
+          echo "=== Searching for .sarif files ==="
+          find /home/runner/work -name "*.sarif" 2>/dev/null
+          echo "=== CODEQL results dir ==="
+          ls -la /home/runner/work/_temp/results/ 2>/dev/null || echo "No results dir"
+          ls -la /home/runner/work/_temp/ 2>/dev/null
+        if: always()
+
   # ==========================================================
   # PHASE 2 — Dependency Audit
   #
@@ -229,6 +246,7 @@ jobs:
           artifact-name: sbom.spdx.json
           output-file: sbom.spdx.json
           format: spdx-json
+          upload-artifact: false
 
       # ── SBOM — CycloneDX format (OWASP) ──────────────────
       - name: Generate SBOM — CycloneDX JSON
@@ -238,6 +256,7 @@ jobs:
           artifact-name: sbom.cyclonedx.json
           output-file: sbom.cyclonedx.json
           format: cyclonedx-json
+          upload-artifact: false
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
